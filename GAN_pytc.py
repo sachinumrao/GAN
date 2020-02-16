@@ -18,17 +18,17 @@ import matplotlib.animation as animation
 #from IPython.display import HTML
 
 # Set random seed for reproducibility
-manualSeed = 999
+manualSeed = 42
 #manualSeed = random.randint(1, 10000) # use if you want new results
 print("Random Seed: ", manualSeed)
 random.seed(manualSeed)
 torch.manual_seed(manualSeed)
 
 # Root directory for dataset
-dataroot = "./data/celeba"
+dataroot = "~/Data/celeba/"
 
 # Number of workers for dataloader
-workers = 2
+workers = 4
 
 # Batch size during training
 batch_size = 128
