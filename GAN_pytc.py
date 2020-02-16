@@ -17,6 +17,12 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 #from IPython.display import HTML
 
+# Function to count model parmas
+def param_count(model):
+    params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    return params
+
+
 # Set random seed for reproducibility
 manualSeed = 42
 #manualSeed = random.randint(1, 10000) # use if you want new results
@@ -137,6 +143,9 @@ netG.apply(weights_init)
 # Print the model
 print(netG)
 
+# Calculate # of parameters in mdoels
+print("Total Params: ", param_count(netG))
+
 class Discriminator(nn.Module):
     def __init__(self, ngpu):
         super(Discriminator, self).__init__()
@@ -177,6 +186,9 @@ netD.apply(weights_init)
 
 # Print the model
 print(netD)
+# Print parameters in discriminator model
+print("Total Params: ", param_count(netD))
+
 
 # Initialize BCELoss function
 criterion = nn.BCELoss()
