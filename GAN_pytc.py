@@ -12,6 +12,7 @@ import torch.utils.data
 import torchvision.datasets as dset
 import torchvision.transforms as transforms
 import torchvision.utils as vutils
+from torchsummary import summary
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
@@ -141,7 +142,7 @@ if (device.type == 'cuda') and (ngpu > 1):
 netG.apply(weights_init)
 
 # Print the model
-print(netG)
+print(summary(netG, (nz, ngf, nc)))
 
 # Calculate # of parameters in mdoels
 print("Total Params: ", param_count(netG))
@@ -185,7 +186,7 @@ if (device.type == 'cuda') and (ngpu > 1):
 netD.apply(weights_init)
 
 # Print the model
-print(netD)
+print(summary(netD, (3, 64, 64)))
 # Print parameters in discriminator model
 print("Total Params: ", param_count(netD))
 
