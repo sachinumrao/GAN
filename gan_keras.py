@@ -9,6 +9,7 @@ print(tf.__version__)
 # Setup project tracking in wandb
 import wandb
 from wandb.keras import WandbCallback
+wandb.init(project="GAN")
 wandb.init(config={"hyper": "parameter"})
 
 # Create Discriminator Model
@@ -113,4 +114,4 @@ gan.compile(d_optimizer=keras.optimizers.SGD(learning_rate=0.0003),
             loss_fn=keras.losses.BinaryCrossentropy(from_logits=True))
 
 # Train the model
-gan.fit(dataset, epochs=3, callbacks=[WandbCallback()])
+gan.fit(dataset, epochs=100, callbacks=[WandbCallback()])
